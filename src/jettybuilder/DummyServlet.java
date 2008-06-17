@@ -1,3 +1,5 @@
+package jettybuilder;
+
 import java.io.IOException;
 
 import javax.servlet.Servlet;

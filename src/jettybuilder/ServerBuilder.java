@@ -1,3 +1,4 @@
+package jettybuilder;
 
 import org.mortbay.jetty.servlet.ServletHolder;
 import org.mortbay.jetty.webapp.WebAppContext;

@@ -1,3 +1,4 @@
+package jettybuilder;
 
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.servlet.ServletHolder;
