@@ -26,4 +26,9 @@ public class ServerBuilderTest {
         Server server = new ServerBuilder().withPort(port).build();
         assertEquals(port, server.getConnectors()[0].getPort());
     }
+
+    @Test
+    public void shouldBeAbleToCreateServerWithServlet(){
+        // new thing.with(Servlet)
+    }
 }
