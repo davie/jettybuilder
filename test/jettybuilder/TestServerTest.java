@@ -57,10 +57,21 @@ public class TestServerTest {
         assertEquals(HttpServletResponse.SC_FORBIDDEN, get.getStatusCode());
     }
 
+    @Test
+    public void happyServerShouldReturnCorrectContent() throws Exception {
+        testServer.happy("content").start();
+        GetMethod get = new GetMethod("http://127.0.0.1:8080");
+        HttpClient client = new HttpClient();
+        client.executeMethod(get);
+
+        assertEquals(HttpServletResponse.SC_OK, get.getStatusCode());
+        assertEquals("content", get.getResponseBodyAsString());
+    }
+    // returns with a delay
+
     // redirect
 
     // slow proxy
 
-    // returns with a delay
 
 }

@@ -29,11 +29,11 @@ public final class SleepingServlet implements Servlet {
 
 	}
 
-	public void service(ServletRequest arg0, ServletResponse arg1)
+	public void service(ServletRequest ignore, ServletResponse ignore2)
 			throws ServletException, IOException {
         while(true){
             try {
-                Thread.sleep(1000L);
+                Thread.sleep(100L);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

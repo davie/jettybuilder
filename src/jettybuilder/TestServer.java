@@ -41,6 +41,11 @@ public class TestServer {
         server.stop();
     }
 
+    public TestServer happy(String content) {
+        serverBuilder.with(webAppContext().with(servlet(new HappyServlet(content))));
+        return this;
+    }
+
     private class HttpErrorCodeServlet extends HttpServlet {
         private int errorCode;
 
@@ -53,4 +58,15 @@ public class TestServer {
         }
     }
 
+    private static class HappyServlet extends HttpServlet {
+        private String content;
+
+        public HappyServlet(String content) {
+            this.content = content;
+        }
+
+        protected void service(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+            httpServletResponse.getWriter().write(content);
+        }
+    }
 }
