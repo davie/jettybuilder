@@ -3,6 +3,7 @@ package jettybuilder;
 import org.mortbay.jetty.servlet.ServletHolder;
 import org.mortbay.jetty.webapp.WebAppContext;
 import org.mortbay.jetty.Server;
+import org.mortbay.jetty.handler.HandlerCollection;
 
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +29,7 @@ public class ServerBuilder {
             return context;
         }
 
-        public static WebAppContextBuilder webAppContext() {
+        public static WebAppContextBuilder  webAppContext() {
             return new WebAppContextBuilder().withContextRoot("/");
         }
 
@@ -38,8 +39,8 @@ public class ServerBuilder {
         }
 
         public static class WebAppContextBuilder {
-            private String name;
-            private String contextRoot;
+            private String name = "/";
+            private String contextRoot = "/";
             private String resourceBase;
             // TODO Should allow a list of servlets
 			private ServletHolder servletHolder;

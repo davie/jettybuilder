@@ -3,8 +3,12 @@ package jettybuilder;
 import org.junit.Test;
 import static org.junit.Assert.assertFalse;import static org.junit.Assert.assertEquals;
 import org.mortbay.jetty.Server;
+import org.mortbay.jetty.Handler;
 import static junit.framework.Assert.assertTrue;
-import jettybuilder.ServerBuilder;
+import static junit.framework.Assert.assertNull;import static junit.framework.Assert.assertNotNull;
+import static jettybuilder.ServerBuilder.*;
+
+import javax.servlet.Servlet;
 
 public class ServerBuilderTest {
 
@@ -28,7 +32,12 @@ public class ServerBuilderTest {
     }
 
     @Test
-    public void shouldBeAbleToCreateServerWithServlet(){
-        // new thing.with(Servlet)
+    public void shouldBeAbleToStartServerContainingServlet() throws Exception {
+        Servlet servlet = new DummyServlet();
+        Server server = new ServerBuilder().withPort(8080).with(webAppContext().with(servlet(servlet))).build();
+        server.start();
+        assertTrue(server.isStarted());
     }
+
+
 }
