@@ -1,4 +1,4 @@
-package jettybuilder;
+package jettybuilder.servlets;
 
 import java.io.IOException;
 
@@ -8,13 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 
-/**
- *
- */
-
 public final class SleepingServlet implements Servlet {
-	public void destroy() {
-
+    	public void destroy() {
 	}
 
 	public ServletConfig getServletConfig() {

@@ -1,6 +1,7 @@
 package jettybuilder;
 
 import static jettybuilder.ServerBuilder.*;
+import jettybuilder.servlets.SleepingServlet;
 import org.mortbay.jetty.Server;
 
 import javax.servlet.*;
@@ -46,6 +47,12 @@ public class TestServer {
         return this;
     }
 
+    public TestServer delayed(int delayMillis, String content) {
+        serverBuilder.with(webAppContext().with(servlet(new DelayedServlet(delayMillis, content))));
+
+        return this;
+    }
+
     private class HttpErrorCodeServlet extends HttpServlet {
         private int errorCode;
 
@@ -67,6 +74,27 @@ public class TestServer {
 
         protected void service(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
             httpServletResponse.getWriter().write(content);
+        }
+    }
+
+    private class DelayedServlet extends HttpServlet {
+        private final String content;
+        private long delayMillis;
+
+        public DelayedServlet(long delayMillis, String content) {
+            this.delayMillis = delayMillis;
+            this.content = content;
+        }
+
+        protected void service(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+            waitFor(delayMillis);
+            httpServletResponse.getWriter().write(content);
+        }
+
+        private void waitFor(long delayMillis) {
+            while(true){
+                   // sleep a bit
+            }
         }
     }
 }

@@ -1,4 +1,4 @@
-package jettybuilder;
+package jettybuilder.servlets;
 
 import javax.servlet.Servlet;
 import javax.servlet.ServletConfig;

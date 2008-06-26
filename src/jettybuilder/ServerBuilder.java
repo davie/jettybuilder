@@ -18,7 +18,7 @@ public class ServerBuilder {
         List<WebAppContext> contexts = new ArrayList<WebAppContext>();
         private boolean shouldStart;
 
-        public ServerBuilder withPort(int port) {
+        public ServerBuilder withPort(Integer port) {
             this.port = port;
             return this;
         }

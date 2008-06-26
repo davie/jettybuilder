@@ -25,7 +25,6 @@ public class TestServerTest {
     @After
     public void tearDown() throws Exception {
         testServer.stop();
-
     }
     
     @Ignore(value = "this test doesn't seem to time out")
@@ -59,13 +58,39 @@ public class TestServerTest {
 
     @Test
     public void happyServerShouldReturnCorrectContent() throws Exception {
-        testServer.happy("content").start();
+        String content = "content";
+        testServer.happy(content).start();
+        GetMethod get = new GetMethod("http://127.0.0.1:8080");
+        HttpClient client = new HttpClient();
+        client.executeMethod(get);
+
+        assertEquals(HttpServletResponse.SC_OK, get.getStatusCode());
+        assertEquals(content, get.getResponseBodyAsString());
+    }
+
+
+    @Ignore
+    @Test
+    public void slowServerShouldReturnCorrectContentAfterTheDelay() throws Exception {
+        testServer.delayed(2000, "content").start();
         GetMethod get = new GetMethod("http://127.0.0.1:8080");
         HttpClient client = new HttpClient();
         client.executeMethod(get);
 
         assertEquals(HttpServletResponse.SC_OK, get.getStatusCode());
         assertEquals("content", get.getResponseBodyAsString());
+    }
+
+    @Ignore
+    @Test
+    public void slowServerShouldNotReturnBeforeTheDelayPeriod() throws Exception {
+        testServer.delayed(2000, "content").start();
+        GetMethod get = new GetMethod("http://127.0.0.1:8080");
+
+        HttpClient client = new HttpClient();
+        client.getHttpConnectionManager().getParams().setConnectionTimeout(1000);
+        client.executeMethod(get);
+        fail("should have timed out");
     }
     // returns with a delay
 
