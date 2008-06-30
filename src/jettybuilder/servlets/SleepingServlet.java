@@ -1,5 +1,7 @@
 package jettybuilder.servlets;
 
+import jettybuilder.exceptions.Defect;
+
 import java.io.IOException;
 
 import javax.servlet.Servlet;
@@ -30,7 +32,7 @@ public final class SleepingServlet implements Servlet {
             try {
                 Thread.sleep(100L);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                throw new Defect("got interrupted", e);
             }
             //don't give up
         }
