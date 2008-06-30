@@ -37,8 +37,6 @@ public class TestServerTest {
         testServer.sleeping().start();
         HttpClient client = httpClientWithTimeout(ONE_SECOND);
         GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s", PORT_NUMBER));
-        HttpClientParams clientParams = new HttpClientParams();
-        get.setParams(clientParams);
         client.executeMethod(get);
         fail("Should have timed out");
     }
@@ -81,7 +79,6 @@ public class TestServerTest {
     }
 
 
-    @Ignore
     @Test
     public void slowServerShouldReturnCorrectContentAfterTheDelay() throws Exception {
         testServer.delayed(TWO_SECONDS, "content").start();
@@ -94,13 +91,11 @@ public class TestServerTest {
         assertEquals("content", get.getResponseBodyAsString());
     }
 
-    @Ignore
-    @Test
+    @Test(expected = SocketTimeoutException.class)
     public void slowServerShouldNotReturnBeforeTheDelayPeriod() throws Exception {
         testServer.delayed(TWO_SECONDS, "content").start();
         GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s", PORT_NUMBER));
-        HttpClient client = new HttpClient();
-        client.getHttpConnectionManager().getParams().setConnectionTimeout(ONE_SECOND);
+        HttpClient client = httpClientWithTimeout(1000);
         client.executeMethod(get);
         fail("should have timed out");
     }

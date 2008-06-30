@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
+import java.util.Calendar;
 
 public class TestServer {
     private ServerBuilder serverBuilder;
@@ -79,9 +80,9 @@ public class TestServer {
 
     private class DelayedServlet extends HttpServlet {
         private final String content;
-        private long delayMillis;
+        private int delayMillis;
 
-        public DelayedServlet(long delayMillis, String content) {
+        public DelayedServlet(int delayMillis, String content) {
             this.delayMillis = delayMillis;
             this.content = content;
         }
@@ -91,9 +92,19 @@ public class TestServer {
             httpServletResponse.getWriter().write(content);
         }
 
-        private void waitFor(long delayMillis) {
-            while(true){
-                   // sleep a bit
+        private void waitFor(int delayMillis) {
+            long wakeUpTime = System.currentTimeMillis() + delayMillis;
+
+            while(System.currentTimeMillis() < wakeUpTime){
+                sleepForMilliseconds(10);
+            }
+        }
+
+        private void sleepForMilliseconds(int millis) {
+            try {
+                Thread.sleep(millis);
+            } catch (InterruptedException e) {
+                //ignore
             }
         }
     }
