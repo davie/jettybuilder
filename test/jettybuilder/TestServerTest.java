@@ -1,16 +1,12 @@
 package jettybuilder;
 
-import org.junit.Test;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import static org.junit.Assert.fail;
-
-import org.apache.commons.httpclient.*;
-import org.apache.commons.httpclient.params.HttpClientParams;
-import org.apache.commons.httpclient.methods.GetMethod;
-
 import static junit.framework.Assert.assertEquals;
+import org.apache.commons.httpclient.HttpClient;
+import org.apache.commons.httpclient.methods.GetMethod;
+import org.junit.After;
+import static org.junit.Assert.fail;
+import org.junit.Before;
+import org.junit.Test;
 
 import javax.servlet.http.HttpServletResponse;
 import java.net.SocketTimeoutException;
@@ -31,8 +27,8 @@ public class TestServerTest {
     public void tearDown() throws Exception {
         testServer.stop();
     }
-    
-    @Test(timeout = 5000, expected = SocketTimeoutException.class)
+
+    @Test(timeout = TWO_SECONDS, expected = SocketTimeoutException.class)
     public void sleepingTestServerShouldNotReturn() throws Exception {
         testServer.sleeping().start();
         HttpClient client = httpClientWithTimeout(ONE_SECOND);
@@ -99,8 +95,19 @@ public class TestServerTest {
         client.executeMethod(get);
         fail("should have timed out");
     }
-    
-    // redirect
+
+
+    @Test
+    public void shouldRedirectsToGivenUrl() throws Exception {
+        String url = "http://some.other/url";
+        testServer.redirectingTo(url).start();
+        GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s", PORT_NUMBER));
+        get.setFollowRedirects(false);
+
+        new HttpClient().executeMethod(get);
+        assertEquals(HttpServletResponse.SC_MOVED_TEMPORARILY, get.getStatusCode());
+        assertEquals(url, get.getResponseHeader("Location").getValue());
+    }
 
     // returns with a delay
 

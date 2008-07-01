@@ -1,15 +1,15 @@
 package jettybuilder;
 
-import static jettybuilder.ServerBuilder.*;
+import static jettybuilder.ServerBuilder.servlet;
+import static jettybuilder.ServerBuilder.webAppContext;
 import jettybuilder.servlets.SleepingServlet;
 import org.mortbay.jetty.Server;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.Calendar;
 
 public class TestServer {
     private ServerBuilder serverBuilder;
@@ -50,6 +50,12 @@ public class TestServer {
 
     public TestServer delayed(int delayMillis, String content) {
         serverBuilder.with(webAppContext().with(servlet(new DelayedServlet(delayMillis, content))));
+
+        return this;
+    }
+
+    public TestServer redirectingTo(String url) {
+        serverBuilder.with(webAppContext().with(servlet(new RedirectingServlet(url))));
 
         return this;
     }
@@ -106,6 +112,18 @@ public class TestServer {
             } catch (InterruptedException e) {
                 //ignore
             }
+        }
+    }
+
+    private class RedirectingServlet extends HttpServlet {
+        private String url;
+
+        public RedirectingServlet(String url) {
+            this.url = url;
+        }
+
+        protected void service(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws ServletException, IOException {
+            httpServletResponse.sendRedirect(url);
         }
     }
 }
