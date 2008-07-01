@@ -109,9 +109,15 @@ public class TestServerTest {
         assertEquals(url, get.getResponseHeader("Location").getValue());
     }
 
-    // returns with a delay
-
     // slow proxy
+
+    // dodgy servers?
+
+    // http 1.1 vs 1.0?
+
+    // anything else
+
+    // serving directory/file - maybe in ServerBuilder
 
 
 }
