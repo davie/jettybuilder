@@ -10,6 +10,9 @@ import org.junit.Test;
 
 import javax.servlet.http.HttpServletResponse;
 import java.net.SocketTimeoutException;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
 
 
 public class TestServerTest {
@@ -109,6 +112,22 @@ public class TestServerTest {
         assertEquals(url, get.getResponseHeader("Location").getValue());
     }
 
+    @Test
+    public void shouldServeGivenPath() throws Exception {
+        File file = File.createTempFile("test", "txt");
+        FileWriter writer = new FileWriter( file);
+        String contents = "contents";
+        writer.write(contents);
+        writer.flush();
+
+        testServer.servingPath(file.getParentFile().getAbsolutePath()).start();
+        GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s/test.txt", PORT_NUMBER));
+        get.setFollowRedirects(false);
+
+        new HttpClient().executeMethod(get);
+        assertEquals(contents, get.getResponseBodyAsString());
+    }
+
     // slow proxy
 
     // dodgy servers?
@@ -117,7 +136,7 @@ public class TestServerTest {
 
     // anything else
 
-    // serving directory/file - maybe in ServerBuilder
+    // serving file - maybe in ServerBuilder
 
 
 }
