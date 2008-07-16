@@ -5,9 +5,7 @@ import static jettybuilder.ServerBuilder.webAppContext;
 import jettybuilder.servlets.*;
 import org.mortbay.jetty.Server;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 
 public class TestServer {
     private ServerBuilder serverBuilder;
@@ -59,7 +57,8 @@ public class TestServer {
     public TestServer servingFile(String fullPath) {
         String content = null;
         try {
-            content = new FileInputStream(fullPath).toString();
+            content = readFileQuietly(fullPath);
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -67,4 +66,19 @@ public class TestServer {
         serverBuilder.with(webAppContext().withContextRoot("/" + fileName).with(servlet(new HappyServlet(content))));
         return this;
     }
+
+    private String readFileQuietly(String fullPath) throws FileNotFoundException {
+        FileInputStream inputStream = new FileInputStream(fullPath);
+        StringWriter writer = new StringWriter();
+        try {
+            int n;
+            while(-1 != (n = inputStream.read())){
+                writer.write(n);
+            }
+        } catch (IOException e) {
+
+        }
+        return writer.toString();
+    }
+
 }

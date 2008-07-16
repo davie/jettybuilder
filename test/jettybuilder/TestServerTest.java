@@ -6,7 +6,6 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.junit.After;
 import static org.junit.Assert.fail;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.servlet.http.HttpServletResponse;
@@ -128,7 +127,6 @@ public class TestServerTest {
         assertEquals(contents, get.getResponseBodyAsString());
     }
 
-    @Ignore(value = "Haven't implemented this yet")
     @Test
     public void shouldServeGivenFile() throws Exception {
         File file = File.createTempFile("test", ".txt");
@@ -138,7 +136,9 @@ public class TestServerTest {
         writer.flush();
 
         testServer.servingFile(file.getAbsolutePath()).start();
-        GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s/%s", PORT_NUMBER, file.getName()));
+        // Note the trailing slash, probably need to change this.
+        String url = String.format("http://127.0.0.1:%s/%s/", PORT_NUMBER, file.getName());
+        GetMethod get = new GetMethod(url);
         get.setFollowRedirects(false);
 
         new HttpClient().executeMethod(get);
