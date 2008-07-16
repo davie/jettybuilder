@@ -1,17 +1,15 @@
 package jettybuilder;
 
+import org.mortbay.jetty.Server;
 import org.mortbay.jetty.servlet.ServletHolder;
 import org.mortbay.jetty.webapp.WebAppContext;
-import org.mortbay.jetty.Server;
-import org.mortbay.jetty.handler.HandlerCollection;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.ArrayList;
-import java.util.Map;
-import java.io.File;
 
 import javax.servlet.Servlet;
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ServerBuilder {
 		private int port;

@@ -4,7 +4,10 @@ import static jettybuilder.ServerBuilder.servlet;
 import static jettybuilder.ServerBuilder.webAppContext;
 import jettybuilder.servlets.*;
 import org.mortbay.jetty.Server;
-import org.mortbay.component.LifeCycle;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class TestServer {
     private ServerBuilder serverBuilder;
@@ -50,6 +53,18 @@ public class TestServer {
 
     public TestServer servingPath(String path) {
         serverBuilder.with(webAppContext().withContextRoot("/").withResourceBase(path));
+        return this;
+    }
+
+    public TestServer servingFile(String fullPath) {
+        String content = null;
+        try {
+            content = new FileInputStream(fullPath).toString();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        String fileName = new File(fullPath).getName();
+        serverBuilder.with(webAppContext().withContextRoot("/" + fileName).with(servlet(new HappyServlet(content))));
         return this;
     }
 }

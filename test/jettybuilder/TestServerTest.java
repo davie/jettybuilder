@@ -6,13 +6,13 @@ import org.apache.commons.httpclient.methods.GetMethod;
 import org.junit.After;
 import static org.junit.Assert.fail;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import javax.servlet.http.HttpServletResponse;
-import java.net.SocketTimeoutException;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
+import java.net.SocketTimeoutException;
 
 
 public class TestServerTest {
@@ -114,14 +114,31 @@ public class TestServerTest {
 
     @Test
     public void shouldServeGivenPath() throws Exception {
-        File file = File.createTempFile("test", "txt");
+        File file = File.createTempFile("test", ".txt");
         FileWriter writer = new FileWriter( file);
         String contents = "contents";
         writer.write(contents);
         writer.flush();
 
         testServer.servingPath(file.getParentFile().getAbsolutePath()).start();
-        GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s/test.txt", PORT_NUMBER));
+        GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s/%s", PORT_NUMBER, file.getName()));
+        get.setFollowRedirects(false);
+
+        new HttpClient().executeMethod(get);
+        assertEquals(contents, get.getResponseBodyAsString());
+    }
+
+    @Ignore(value = "Haven't implemented this yet")
+    @Test
+    public void shouldServeGivenFile() throws Exception {
+        File file = File.createTempFile("test", ".txt");
+        FileWriter writer = new FileWriter( file);
+        String contents = "contents";
+        writer.write(contents);
+        writer.flush();
+
+        testServer.servingFile(file.getAbsolutePath()).start();
+        GetMethod get = new GetMethod(String.format("http://127.0.0.1:%s/%s", PORT_NUMBER, file.getName()));
         get.setFollowRedirects(false);
 
         new HttpClient().executeMethod(get);
@@ -134,9 +151,9 @@ public class TestServerTest {
 
     // http 1.1 vs 1.0?
 
-    // anything else
-
     // serving file - maybe in ServerBuilder
+
+    // anything else
 
 
 }
