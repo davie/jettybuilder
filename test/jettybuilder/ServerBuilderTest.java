@@ -14,9 +14,6 @@ import javax.servlet.Servlet;
 public class ServerBuilderTest {
     private Server server;
 
-    protected void setUp() throws Exception {
-    }
-
     @After
     public void tearDown() throws Exception {
         if(server != null){
