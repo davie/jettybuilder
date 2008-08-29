@@ -145,21 +145,5 @@ public class SimpleServerTest {
         assertEquals(contents, get.getResponseBodyAsString());
     }
 
-    // slow proxy
-
-    // dodgy servers?
-
-    // http 1.1 vs 1.0?
-
-    // serving file - maybe in ServerBuilder
-
-    // authentication - basic auth
-
-    // SSL, client certs etc
-
-    // anything else
-
-    // pick a free port, and let the caller know what it is - so they don't have to guess a free one
-
 
 }
