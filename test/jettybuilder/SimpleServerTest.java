@@ -153,7 +153,13 @@ public class SimpleServerTest {
 
     // serving file - maybe in ServerBuilder
 
+    // authentication - basic auth
+
+    // SSL, client certs etc
+
     // anything else
+
+    // pick a free port, and let the caller know what it is - so they don't have to guess a free one
 
 
 }
