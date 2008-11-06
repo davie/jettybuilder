@@ -24,7 +24,65 @@
           <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES />
+        <SOURCES>
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/html/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/cometd/demo/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/util/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/naming/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/sslengine/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/examples/test-webapp/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/examples/spring-ebj3-demo/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/client/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/jetty-ant/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/jspc-maven-plugin/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/maven-plugin/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/maven-beanshell-plugin/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/examples/test-jndi-webapp/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/cometd/client/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/cometd/client/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/grizzly/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/setuid/modules/native/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/xbean/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/annotations/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/examples/embedded/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/j2se6/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/naming/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/win32service/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/ajp/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/maven-beanshell-plugin/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/cometd/bayeux/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/terracotta/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/sslengine/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/examples/tests/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/ajp/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/wadi/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/examples/test-annotations/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/jsp-api-2.0/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/jetty/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/jetty-ant/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/cometd/bayeux/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/start/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/gwt/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/plus/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/plus/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/management/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/spring/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/management/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/annotations/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/jetty/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/client/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/xbean/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/threadpool/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/servlet-tester/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/util/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/cometd/api/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/html/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/jsp-2.1/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/setuid/modules/java/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/extras/jboss/src/main/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/contrib/terracotta/src/test/java" />
+          <root url="jar://$MODULE_DIR$/lib/jetty-6.1.7-src.zip!/jetty-6.1.7/modules/servlet-api-2.5/src/main/java" />
+        </SOURCES>
       </library>
     </orderEntry>
     <orderEntry type="module-library">
